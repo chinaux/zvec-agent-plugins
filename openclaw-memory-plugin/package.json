@@ -33,11 +33,11 @@
     "format": "prettier --write \"**/*.ts\""
   },
   "dependencies": {
+    "@sinclair/typebox": "^0.34.0",
     "@zvec/zvec": "^0.2.0",
     "openai": "^4.20.0"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.34.0",
     "@types/node": "^20.0.0",
     "@vitest/coverage-v8": "2.1.9",
     "openclaw": "^2026.3.1",
