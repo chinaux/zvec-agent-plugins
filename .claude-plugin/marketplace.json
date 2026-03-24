@@ -1,11 +1,11 @@
 {
-  "name": "zvec-ai",
+  "name": "chinaux",
   "owner": {
     "name": "zvec group"
   },
   "metadata": {
     "description": "Plugins by zvec group",
-    "homepage": "https://github.com/zvec-ai/claude-memory-plugin"
+    "homepage": "https://github.com/chinaux/claude-memory-plugin"
   },
   "plugins": [
     {

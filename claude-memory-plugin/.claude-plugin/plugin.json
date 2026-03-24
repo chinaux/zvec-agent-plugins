@@ -2,9 +2,9 @@
   "name": "memory-zvec",
   "version": "0.2.1",
   "description": "Persistent memory for Claude Code powered by zvec vector database",
-  "repository": "https://github.com/zvec-ai/claude-memory-plugin",
+  "repository": "https://github.com/chinaux/claude-memory-plugin",
   "author": {
-    "name": "zvec-ai"
+    "name": "chinaux"
   },
   "license": "Apache-2.0",
   "keywords": [

@@ -169,14 +169,14 @@ python3 ${CLAUDE_PLUGIN_ROOT}/scripts/memory_zvec.py recall --query "outdated in
 
 1. 快速安装（插件市场）
 ```bash
-/plugin marketplace add zvec-ai/agent-plugins
+/plugin marketplace add chinaux/zvec-agent-plugins
 /plugin install memory-zvec
 ```
 
 2. 本地安装：
 ```bash
-git clone https://github.com/zvec-ai/agent-plugins.git
-cd agent-plugins
+git clone https://github.com/chinaux/zvec-agent-plugins.git
+cd zvec-agent-plugins
 claude --plugin-dir ./claude-memory-plugin
 ```
 

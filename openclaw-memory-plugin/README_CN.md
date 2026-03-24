@@ -26,15 +26,10 @@ openclaw-memory-plugin/
 └── README.md             # 文档
 ```
 
-## 快速安装
-```bash
-openclaw plugins install @zvec-ai/memory-zvec
-```
-
 ## 本地安装
 
 ```bash
-git clone https://github.com/zvec-ai/agent-plugins.git
+git clone https://github.com/chinaux/zvec-agent-plugins.git
 cd openclaw-memory-plugin
 # 构建插件
 pnpm install && pnpm clean && pnpm build

@@ -15,7 +15,7 @@ OpenClaw memory plugin using zvec as embedded vector database. Supports automati
 ## Structure
 
 ```
-agent-plugins/
+zvec-agent-plugins/
 ├── claude-memory-plugin/    # Claude Code memory plugin
 └── openclaw-memory-plugin/  # OpenClaw memory plugin
 ```

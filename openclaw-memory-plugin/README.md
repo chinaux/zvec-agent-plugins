@@ -26,9 +26,11 @@ openclaw-memory-plugin/
 └── README.md             # Documentation
 ```
 
-## Quick Install
+## Local Install
 
 ```bash
+git clone https://github.com/chinaux/zvec-agent-plugins.git
+cd openclaw-memory-plugin
 # Build the plugin
 pnpm install && pnpm clean && pnpm build
 
