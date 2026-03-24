@@ -1,0 +1,67 @@
+{
+  "id": "memory-zvec",
+  "kind": "memory",
+  "uiHints": {
+    "embedding.apiKey": {
+      "label": "Embedding API Key",
+      "sensitive": true,
+      "placeholder": "your-api-key",
+      "help": "API key for embedding provider"
+    },
+    "embedding.model": {
+      "label": "Embedding Model",
+      "placeholder": "text-embedding-3-small",
+      "help": "Embedding model to use"
+    },
+    "embedding.baseUrl": {
+      "label": "Base URL",
+      "placeholder": "https://api.openai.com/v1",
+      "help": "Base URL for embedding API"
+    },
+    "dbPath": {
+      "label": "Database Path",
+      "placeholder": "~/.openclaw/memory/zvec",
+      "advanced": true
+    },
+    "autoCapture": {
+      "label": "Auto-Capture",
+      "help": "Automatically capture important information"
+    },
+    "autoRecall": {
+      "label": "Auto-Recall",
+      "help": "Automatically inject relevant memories"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "embedding": {
+        "type": "object",
+        "properties": {
+          "apiKey": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "baseUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "dbPath": {
+        "type": "string"
+      },
+      "autoCapture": {
+        "type": "boolean"
+      },
+      "autoRecall": {
+        "type": "boolean"
+      },
+      "captureMaxChars": {
+        "type": "number"
+      }
+    }
+  }
+}

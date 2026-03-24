@@ -1,0 +1,71 @@
+{
+  "name": "memory-zvec",
+  "version": "0.2.1",
+  "private": false,
+  "description": "OpenClaw Memory plugin using zvec embedded vector database",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "README.md",
+    "config.ts",
+    "index.ts",
+    "memory-db.ts",
+    "openclaw.plugin.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run index.test.ts",
+    "test:integration": "vitest run integration.test.ts",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "lint": "oxlint --config .oxlintrc.json",
+    "format": "prettier --write \"**/*.ts\""
+  },
+  "dependencies": {
+    "@zvec/zvec": "^0.2.0",
+    "openai": "^4.20.0"
+  },
+  "devDependencies": {
+    "@sinclair/typebox": "^0.34.0",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "2.1.9",
+    "openclaw": "^2026.3.1",
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@sinclair/typebox": ">=0.32.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "defaultConfig": {
+      "enabled": true,
+      "config": {
+        "embedding": {
+            "apiKey": "${OPENAI_API_KEY}",
+            "model": "text-embedding-3-small",
+            "baseUrl": "https://api.openai.com/v1/embeddings"
+        },
+        "dbPath": "~/.openclaw/memory/zvec",
+        "autoCapture": true,
+        "autoRecall": true
+      }
+    }
+  }
+}

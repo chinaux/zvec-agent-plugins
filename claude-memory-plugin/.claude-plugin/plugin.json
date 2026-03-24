@@ -1,0 +1,17 @@
+{
+  "name": "memory-zvec",
+  "version": "0.2.1",
+  "description": "Persistent memory for Claude Code powered by zvec vector database",
+  "repository": "https://github.com/zvec-ai/claude-memory-plugin",
+  "author": {
+    "name": "zvec-ai"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "memory",
+    "context",
+    "persistence",
+    "hooks",
+    "mcp"
+  ]
+}
