@@ -217,6 +217,9 @@ export function detectCategory(text: string): MemoryCategory {
 // Plugin definition
 // ============================================================================
 
+// Global flag to track if plugin has been registered (prevents duplicate logging)
+let hasRegistered = false;
+
 const memoryPlugin = {
   id: "memory-zvec",
   name: "Memory (zvec)",
@@ -246,9 +249,13 @@ const memoryPlugin = {
       cfg.embedding.baseUrl,
     );
 
-    api.logger.info(
-      `memory-zvec: plugin registered (db: ${resolvedDbPath}, model: ${cfg.embedding.model} config - autoRecall: ${cfg.autoRecall}, autoCapture: ${cfg.autoCapture}, captureMaxChars: ${cfg.captureMaxChars}, lazy init)`,
-    );
+    // Only log on first registration to avoid spam
+    if (!hasRegistered) {
+      api.logger.info(
+        `memory-zvec: plugin registered (db: ${resolvedDbPath}, model: ${cfg.embedding.model} config - autoRecall: ${cfg.autoRecall}, autoCapture: ${cfg.autoCapture}, captureMaxChars: ${cfg.captureMaxChars}, lazy init)`,
+      );
+      hasRegistered = true;
+    }
 
     // ========================================================================
     // Tool registration
@@ -614,27 +621,20 @@ const memoryPlugin = {
     // Service
     // ========================================================================
 
-    process.on("SIGTERM", async () => {
+    const cleanupAndExit = async (signal: string) => {
       try {
-        api.logger.info("memory-zvec: received SIGTERM, cleaning up...");
+        api.logger.info(`memory-zvec: received ${signal}, cleaning up...`);
         await db.close();
         process.exit(0);
       } catch (error) {
         api.logger.error(`memory-zvec: cleanup failed: ${String(error)}`);
         process.exit(1);
       }
-    });
+    };
 
-    process.on("SIGINT", async () => {
-      try {
-        api.logger.info("memory-zvec: received SIGINT, cleaning up...");
-        await db.close();
-        process.exit(0);
-      } catch (error) {
-        api.logger.error(`memory-zvec: cleanup failed: ${String(error)}`);
-        process.exit(1);
-      }
-    });
+    // Use 'once' to ensure the handler only runs once and doesn't accumulate on re-registration
+    process.once("SIGTERM", () => cleanupAndExit("SIGTERM"));
+    process.once("SIGINT", () => cleanupAndExit("SIGINT"));
 
     api.registerService({
       id: "memory-zvec",
